@@ -67,7 +67,13 @@ public class JohnMovement : MonoBehaviour
 
     private void Jump()
     {
-        Rigidbody2D.AddForce(Vector2.up * JumpForce);
+        // Verificar si el personaje está en la capa de suelo
+        Collider2D groundCollider = Physics2D.OverlapBox(controladorSuelo.position, dimensionesCaja, 0f, queEsSuelo);
+        if (groundCollider != null)
+        {
+            // Aplicar fuerza de salto solo si está en la capa de suelo
+            Rigidbody2D.AddForce(Vector2.up * JumpForce);
+        }
     }
 
     private void Shoot()

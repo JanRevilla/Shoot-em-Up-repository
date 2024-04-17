@@ -15,10 +15,18 @@ public class JohnMovement : MonoBehaviour
     private float LastShoot;
     private int Health = 5;
 
+    [Header ("Salto")]
+
+    [SerializeField] private LayerMask queEsSuelo;
+    [SerializeField] private Transform controladorSuelo;
+    [SerializeField] private Vector3 dimensionesCaja;
+    [SerializeField] private bool enSuelo;
+
     private void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
+       
     }
 
     private void Update()
@@ -38,6 +46,10 @@ public class JohnMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             Jump();
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            DesactivarPlataformas();
         }
 
         // Disparar
@@ -72,5 +84,24 @@ public class JohnMovement : MonoBehaviour
     {
         Health -= 1;
         if (Health == 0) Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(controladorSuelo.position, dimensionesCaja);    
+    }
+
+    private void DesactivarPlataformas()
+    {
+        Collider2D[] objetos = Physics2D.OverlapBoxAll(controladorSuelo.position, dimensionesCaja, 0f, queEsSuelo);
+        foreach (Collider2D item in objetos)
+        {
+            PlatformEffector2D platformEffector2D = item.GetComponent<PlatformEffector2D>();
+            if(platformEffector2D != null) 
+            { 
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), item.GetComponent<Collider2D>(), true);
+            }
+        }
     }
 }

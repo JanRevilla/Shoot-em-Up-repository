@@ -9,6 +9,7 @@ public class CameraMovement : MonoBehaviour
     public float offsetY = 2;
     public float offsetX = 2;
 
+
     void Start()
     {
         moveTemp = followObject.transform.position;
@@ -16,6 +17,7 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
+
         moveTemp = followObject.transform.position;
         moveTemp.y += offsetY;
         moveTemp.x += offsetX;

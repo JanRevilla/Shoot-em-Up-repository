@@ -43,7 +43,7 @@ public class JohnMovement : MonoBehaviour
         // Debug.DrawRay(transform.position, Vector3.down * 0.1f, Color.red);        
 
         // Salto
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && !IsOnPlatformWithTag("Plataforma1"))
         {
             Jump();
         }
@@ -74,6 +74,19 @@ public class JohnMovement : MonoBehaviour
             // Aplicar fuerza de salto solo si está en la capa de suelo
             Rigidbody2D.AddForce(Vector2.up * JumpForce);
         }
+    }
+
+    private bool IsOnPlatformWithTag(string tag)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(controladorSuelo.position, 0.2f, queEsSuelo);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag(tag))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void Shoot()

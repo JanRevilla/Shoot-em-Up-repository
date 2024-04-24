@@ -21,6 +21,8 @@ public class JohnMovement : MonoBehaviour
     [SerializeField] private Transform controladorSuelo;
     [SerializeField] private Vector3 dimensionesCaja;
     [SerializeField] private bool enSuelo;
+    [SerializeField] private ParticleSystem particulas;
+
 
     private void Start()
     {
@@ -46,10 +48,12 @@ public class JohnMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && !IsOnPlatformWithTag("Plataforma1"))
         {
             Jump();
+            particulas.Play();
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
             DesactivarPlataformas();
+           
         }
 
         // Disparar

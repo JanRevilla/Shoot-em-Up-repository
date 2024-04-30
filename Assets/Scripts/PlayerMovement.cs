@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
-public class JohnMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float Speed;
     public float JumpForce;
@@ -10,47 +9,48 @@ public class JohnMovement : MonoBehaviour
 
     private Rigidbody2D Rigidbody2D;
     private Animator Animator;
-    private float Horizontal;
-    private bool Grounded;
+    private float HorizontalMovement;
     private float LastShoot;
     private int Health = 5;
 
+    public KeyCode jumpKey;
+    public KeyCode downKey;
+    public string floorPlatform = "Plataforma1";
+
     [Header ("Salto")]
 
-    [SerializeField] private LayerMask queEsSuelo;
-    [SerializeField] private Transform controladorSuelo;
-    [SerializeField] private Vector3 dimensionesCaja;
-    [SerializeField] private bool enSuelo;
-    [SerializeField] private ParticleSystem particulas;
-
+    [SerializeField] private LayerMask whatIsFloor;
+    [SerializeField] private Transform floorController;
+    [SerializeField] private Vector3 boxDimensions;
+    [SerializeField] private bool isFloor;
+    [SerializeField] private ParticleSystem jumpParticles;
 
     private void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
-        Animator = GetComponent<Animator>();
-       
+        Animator = GetComponent<Animator>();  
     }
 
     private void Update()
     {
         // Movimiento
-        Horizontal = Input.GetAxisRaw("Horizontal");
+        HorizontalMovement = Input.GetAxisRaw("Horizontal");
 
-        if (Horizontal < 0.0f) transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-        else if (Horizontal > 0.0f) transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        if (HorizontalMovement < 0.0f) transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+        else if (HorizontalMovement > 0.0f) transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-        Animator.SetBool("running", Horizontal != 0.0f);
+        Animator.SetBool("running", HorizontalMovement != 0.0f);
 
         // Detectar Suelo
         // Debug.DrawRay(transform.position, Vector3.down * 0.1f, Color.red);        
 
         // Salto
-        if (Input.GetKeyDown(KeyCode.W) && !IsOnPlatformWithTag("Plataforma1"))
+        if (Input.GetKeyDown(jumpKey) && !IsOnPlatformWithTag(floorPlatform))
         {
             Jump();
-            particulas.Play();
+            jumpParticles.Play();
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(downKey))
         {
             DesactivarPlataformas();
            
@@ -66,13 +66,13 @@ public class JohnMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Rigidbody2D.velocity = new Vector2(Horizontal * Speed, Rigidbody2D.velocity.y);
+        Rigidbody2D.velocity = new Vector2(HorizontalMovement * Speed, Rigidbody2D.velocity.y);
     }
 
     private void Jump()
     {
         // Verificar si el personaje está en la capa de suelo
-        Collider2D groundCollider = Physics2D.OverlapBox(controladorSuelo.position, dimensionesCaja, 0f, queEsSuelo);
+        Collider2D groundCollider = Physics2D.OverlapBox(floorController.position, boxDimensions, 0f, whatIsFloor);
         if (groundCollider != null)
         {
             // Aplicar fuerza de salto solo si está en la capa de suelo
@@ -82,7 +82,7 @@ public class JohnMovement : MonoBehaviour
 
     private bool IsOnPlatformWithTag(string tag)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(controladorSuelo.position, 0.2f, queEsSuelo);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(floorController.position, 0.2f, whatIsFloor);
         foreach (Collider2D collider in colliders)
         {
             if (collider.CompareTag(tag))
@@ -112,12 +112,12 @@ public class JohnMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(controladorSuelo.position, dimensionesCaja);    
+        Gizmos.DrawWireCube(floorController.position, boxDimensions);    
     }
 
     private void DesactivarPlataformas()
     {
-        Collider2D[] objetos = Physics2D.OverlapBoxAll(controladorSuelo.position, dimensionesCaja, 0f, queEsSuelo);
+        Collider2D[] objetos = Physics2D.OverlapBoxAll(floorController.position, boxDimensions, 0f, whatIsFloor);
         foreach (Collider2D item in objetos)
         {
             PlatformEffector2D platformEffector2D = item.GetComponent<PlatformEffector2D>();

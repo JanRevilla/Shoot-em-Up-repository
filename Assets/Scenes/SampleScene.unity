@@ -488,8 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d6a94498e8b7d49b2f8e21eec40825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puntos: {fileID: 766504621}
-  enemigos:
+  spawnPoints: {fileID: 766504621}
+  enemies:
   - {fileID: 6206459914688605886, guid: a23b495506b4001448546c63d20d944b, type: 3}
   time: 1
 --- !u!4 &339535531
@@ -761,7 +761,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.43945992, y: -0.051000003, z: -10}
+  m_LocalPosition: {x: -0.43999666, y: -0.051000003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1229,13 +1229,16 @@ MonoBehaviour:
   Speed: 1
   JumpForce: 150
   BulletPrefab: {fileID: 9141338218809068285, guid: 25e8272bdec09f94e877850708a6b54f, type: 3}
-  queEsSuelo:
+  jumpKey: 119
+  downKey: 115
+  floorPlatform: Plataforma1
+  whatIsFloor:
     serializedVersion: 2
     m_Bits: 8
-  controladorSuelo: {fileID: 37663131}
-  dimensionesCaja: {x: 0.27, y: -0.03, z: 0}
-  enSuelo: 0
-  particulas: {fileID: 854926518}
+  floorController: {fileID: 37663131}
+  boxDimensions: {x: 0.27, y: -0.03, z: 0}
+  isFloor: 0
+  jumpParticles: {fileID: 854926518}
 --- !u!1 &854926517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6401,7 +6404,7 @@ Transform:
   m_GameObject: {fileID: 1398824921}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.43945992, y: -0.051000003, z: -10}
+  m_LocalPosition: {x: -0.43999666, y: -0.051000003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6437,8 +6440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d6a94498e8b7d49b2f8e21eec40825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puntos: {fileID: 213774157}
-  enemigos:
+  spawnPoints: {fileID: 213774157}
+  enemies:
   - {fileID: 6206459914688605886, guid: a23b495506b4001448546c63d20d944b, type: 3}
   time: 1
 --- !u!4 &1475022254
@@ -6501,7 +6504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38bbdd3819e73541940ff4f0b6f4c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: {x: 0.05, y: 0}
+  movementSpeed: {x: 0, y: 0}
 --- !u!212 &1648462909
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6808,7 +6811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38bbdd3819e73541940ff4f0b6f4c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: {x: 0, y: 0}
+  movementSpeed: {x: 0, y: 0}
 --- !u!212 &1890163400
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6924,8 +6927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d6a94498e8b7d49b2f8e21eec40825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puntos: {fileID: 1301055613}
-  enemigos:
+  spawnPoints: {fileID: 1301055613}
+  enemies:
   - {fileID: 6206459914688605886, guid: a23b495506b4001448546c63d20d944b, type: 3}
   time: 1
 --- !u!4 &1932019980
@@ -7183,7 +7186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38bbdd3819e73541940ff4f0b6f4c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: {x: 0, y: 0}
+  movementSpeed: {x: 0, y: 0}
 --- !u!212 &2139968935
 SpriteRenderer:
   m_ObjectHideFlags: 0

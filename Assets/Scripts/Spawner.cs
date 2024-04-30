@@ -8,8 +8,8 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     //private float maxX, maxY,minX, minY;
     float x, y;
-    [SerializeField]private Transform puntos;
-    [SerializeField] private GameObject[] enemigos;
+    [SerializeField]private Transform spawnPoints;
+    [SerializeField] private GameObject[] enemies;
     [SerializeField] private float time;
     private float timeNext;
     void Start()
@@ -18,8 +18,8 @@ public class Spawner : MonoBehaviour
         //minX = puntos.Min(punto => punto.position.y);
         //maxY = puntos.Max(punto => punto.position.x);
         //minX = puntos.Min(punto => punto.position.y);
-        x = puntos.position.x;
-        y = puntos.position.y;
+        x = spawnPoints.position.x;
+        y = spawnPoints.position.y;
          
     }
 
@@ -36,9 +36,9 @@ public class Spawner : MonoBehaviour
 
     private void CrearEnemigo()
     {
-        int numeroEnemigo = Random.Range(0, enemigos.Length);
+        int numeroEnemigo = Random.Range(0, enemies.Length);
         Vector2 posicionAleatoria = new Vector2 (x,y);
 
-        Instantiate(enemigos[numeroEnemigo],posicionAleatoria,Quaternion.identity) ;
+        Instantiate(enemies[numeroEnemigo],posicionAleatoria,Quaternion.identity) ;
     }
 }

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
@@ -30,7 +29,7 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        JohnMovement john = other.GetComponent<JohnMovement>();
+        PlayerMovement john = other.GetComponent<PlayerMovement>();
         if (john != null)
         {
             john.Hit();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BackgroundMovement : MonoBehaviour
 {
-    [SerializeField] private Vector2 velocidadMovimiento;
+    [SerializeField] private Vector2 movementSpeed;
     private Vector2 offset;
     private Material material;
 
@@ -17,7 +17,7 @@ public class BackgroundMovement : MonoBehaviour
 
     private void Update()
     {
-        offset = velocidadMovimiento * Time.deltaTime;
+        offset = movementSpeed * Time.deltaTime;
         material.mainTextureOffset += offset;
     }
 }

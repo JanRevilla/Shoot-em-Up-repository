@@ -29,7 +29,7 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerMovement john = other.GetComponent<PlayerMovement>();
+        PlayerShooting john = other.GetComponent<PlayerShooting>();
         if (john != null)
         {
             john.Hit();

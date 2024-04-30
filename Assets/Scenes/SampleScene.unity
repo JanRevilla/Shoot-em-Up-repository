@@ -488,8 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d6a94498e8b7d49b2f8e21eec40825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puntos:
-  - {fileID: 766504621}
+  puntos: {fileID: 766504621}
   enemigos:
   - {fileID: 1892847115}
   time: 1
@@ -6454,8 +6453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d6a94498e8b7d49b2f8e21eec40825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puntos:
-  - {fileID: 213774157}
+  puntos: {fileID: 213774157}
   enemigos:
   - {fileID: 1892847115}
   time: 1
@@ -6892,6 +6890,7 @@ GameObject:
   - component: {fileID: 1892847118}
   - component: {fileID: 1892847119}
   - component: {fileID: 1892847120}
+  - component: {fileID: 1892847121}
   m_Layer: 0
   m_Name: Necromancer
   m_TagString: Untagged
@@ -7036,6 +7035,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   distance: 3
+--- !u!114 &1892847121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892847115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4759d1702b2e345992dfbd3423e2dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 1892847115}
 --- !u!1 &1906705432
 GameObject:
   m_ObjectHideFlags: 0
@@ -7099,8 +7111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d6a94498e8b7d49b2f8e21eec40825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puntos:
-  - {fileID: 1301055613}
+  puntos: {fileID: 1301055613}
   enemigos:
   - {fileID: 1892847115}
   time: 1

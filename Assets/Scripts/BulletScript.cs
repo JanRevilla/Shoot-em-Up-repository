@@ -34,5 +34,6 @@ public class BulletScript : MonoBehaviour
         {
             enemy.Hit();
         }
+        DestroyBullet();
     }
 }

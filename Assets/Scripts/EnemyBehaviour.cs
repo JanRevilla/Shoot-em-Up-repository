@@ -27,7 +27,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerMovement player = other.GetComponent<PlayerMovement>();
+        PlayerBehaviour player = other.GetComponent<PlayerBehaviour>();
         if (player != null)
         {
             player.Hit();

@@ -10,8 +10,9 @@ public class Spawner : MonoBehaviour
     float x, y;
     [SerializeField]private Transform spawnPoints;
     [SerializeField] private GameObject[] enemies;
-    [SerializeField] private float time;
-    private float timeNext;
+    [SerializeField] private float minTimeBetweenSpawns = 6f;
+    [SerializeField] private float maxTimeBetweenSpawns = 9f;
+    private float timeNextSpawn;
     void Start()
     {
         //maxX = puntos.Max(punto => punto.position.x);
@@ -20,17 +21,16 @@ public class Spawner : MonoBehaviour
         //minX = puntos.Min(punto => punto.position.y);
         x = spawnPoints.position.x;
         y = spawnPoints.position.y;
-         
+        timeNextSpawn = Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns); // Inicializa el tiempo para la próxima generación aleatoriamente
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeNext += Time.deltaTime;
-        if (timeNext >= time) 
-        { 
-            timeNext = 0;
-            CrearEnemigo();
+        if (Time.time >= timeNextSpawn)
+        {
+            CrearEnemigo(); // Genera un enemigo cuando se alcanza el tiempo para la próxima generación
+            timeNextSpawn = Time.time + Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns); // Actualiza el tiempo para la próxima generación aleatoriamente
         }
     }
 

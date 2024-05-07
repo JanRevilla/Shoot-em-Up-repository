@@ -21,10 +21,6 @@ public class NewBehaviourScript : MonoBehaviour
         Vector3 movement = Vector3.right * direction * speed * Time.deltaTime;
         
         transform.Translate(movement);
-
-        
-        
+      
     }
-
- 
 }

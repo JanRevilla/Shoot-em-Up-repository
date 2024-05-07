@@ -1,24 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using System.Linq;
 
-public class Spawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
     // Start is called before the first frame update
     //private float maxX, maxY,minX, minY;
     float x, y;
     [SerializeField]private Transform spawnPoints;
-    [SerializeField] private GameObject[] enemies;
-    [SerializeField] private float minTimeBetweenSpawns = 6f;
-    [SerializeField] private float maxTimeBetweenSpawns = 9f;
+    [SerializeField] private GameObject[]enemies;
+    [SerializeField] private float minTimeBetweenSpawns = 1f;
+    [SerializeField] private float maxTimeBetweenSpawns = 3f;
     private float timeNextSpawn;
     void Start()
     {
-        //maxX = puntos.Max(punto => punto.position.x);
-        //minX = puntos.Min(punto => punto.position.y);
-        //maxY = puntos.Max(punto => punto.position.x);
-        //minX = puntos.Min(punto => punto.position.y);
         x = spawnPoints.position.x;
         y = spawnPoints.position.y;
         timeNextSpawn = Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns); // Inicializa el tiempo para la próxima generación aleatoriamente
@@ -30,7 +25,7 @@ public class Spawner : MonoBehaviour
         if (Time.time >= timeNextSpawn)
         {
             CrearEnemigo(); // Genera un enemigo cuando se alcanza el tiempo para la próxima generación
-            timeNextSpawn = Time.time + Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns); // Actualiza el tiempo para la próxima generación aleatoriamente
+            timeNextSpawn = Time.time + Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns) + 3f; // Actualiza el tiempo para la próxima generación aleatoriamente
         }
     }
 

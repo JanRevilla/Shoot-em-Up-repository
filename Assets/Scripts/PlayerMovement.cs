@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D Rigidbody2D;
     private Animator Animator;
     private float HorizontalMovement;
+    private float Health = 3;
 
     public KeyCode jumpKey;
     public KeyCode downKey;
@@ -101,6 +102,15 @@ public class PlayerMovement : MonoBehaviour
             { 
                 Physics2D.IgnoreCollision(GetComponent<Collider2D>(), item.GetComponent<Collider2D>(), true);
             }
+        }
+    }
+
+    public void Hit()
+    {
+        Health = Health - 1;
+        if (Health == 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

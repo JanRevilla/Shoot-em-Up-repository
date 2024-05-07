@@ -28,12 +28,11 @@ public class BulletScript : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {
-        PlayerShooting john = other.GetComponent<PlayerShooting>();
-        if (john != null)
+    {  
+        EnemyBehaviour enemy = other.GetComponent<EnemyBehaviour>();
+        if (enemy != null)
         {
-            john.Hit();
+            enemy.Hit();
         }
-        DestroyBullet();
     }
 }

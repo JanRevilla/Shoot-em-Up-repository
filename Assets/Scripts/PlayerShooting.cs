@@ -26,11 +26,5 @@ public class PlayerShooting : MonoBehaviour
         GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f, Quaternion.identity);
         bullet.GetComponent<BulletScript>().SetDirection(direction);
     }
-
-    // repassar
-    public void Hit()
-    {
-        Health -= 1;
-        if (Health == 0) Destroy(gameObject);
-    }
+  
 }

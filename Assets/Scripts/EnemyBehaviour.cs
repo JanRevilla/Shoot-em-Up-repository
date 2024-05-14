@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
-{    
-    public float speed = 2f; 
-    public float distance = 3f; 
+{
+    public float speed = 2f;
+    public float distance = 3f;
     private Vector3 startingPosition;
-    private int direction = -1; 
+    private int direction = -1;
+    public Animator animator;
+    private bool canMove = true;
 
     void Start()
     {
@@ -15,14 +17,18 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     void Update()
-    {       
-        Vector3 movement = Vector3.right * direction * speed * Time.deltaTime;
-        
-        transform.Translate(movement);     
+    {
+        if (canMove)
+        {
+            Vector3 movement = Vector3.right * direction * speed * Time.deltaTime;
+            transform.Translate(movement);
+        }
     }
     public void Hit()
     {
-        Destroy(gameObject); // Destruye al enemigo cuando es golpeado por la bala
+        animator.SetTrigger("EnemyDead");
+        canMove = false;
+        Destroy(gameObject, 0.4f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

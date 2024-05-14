@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   distance: 3
+  animator: {fileID: 2939249398358394728}
 --- !u!114 &8635521224366461770
 MonoBehaviour:
   m_ObjectHideFlags: 0

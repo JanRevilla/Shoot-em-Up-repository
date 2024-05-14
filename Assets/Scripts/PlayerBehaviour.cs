@@ -9,13 +9,15 @@ public class PlayerBehaviour : MonoBehaviour
     private Rigidbody2D Rigidbody2D;
     private Animator Animator;
     private float HorizontalMovement;
-    private float Health = 3;
+    public int Health = 3;
+
+    public HUD HUD;
 
     public KeyCode jumpKey;
     public KeyCode downKey;
     public string floorPlatform = "Plataforma1";
 
-    [Header ("Salto")]
+    [Header("Salto")]
 
     [SerializeField] private LayerMask whatIsFloor;
     [SerializeField] private Transform floorController;
@@ -26,7 +28,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
-        Animator = GetComponent<Animator>();  
+        Animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -51,7 +53,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKeyDown(downKey))
         {
             DesactivarPlataformas();
-           
+
         }
 
     }
@@ -89,7 +91,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(floorController.position, boxDimensions);    
+        Gizmos.DrawWireCube(floorController.position, boxDimensions);
     }
 
     private void DesactivarPlataformas()
@@ -98,18 +100,29 @@ public class PlayerBehaviour : MonoBehaviour
         foreach (Collider2D item in objetos)
         {
             PlatformEffector2D platformEffector2D = item.GetComponent<PlatformEffector2D>();
-            if(platformEffector2D != null) 
-            { 
+            if (platformEffector2D != null)
+            {
                 Physics2D.IgnoreCollision(GetComponent<Collider2D>(), item.GetComponent<Collider2D>(), true);
             }
         }
     }
 
     public void Hit()
-    {
-        Health = Health - 1;
-        if (Health == 0)
+    {      
+        Health -= 1;     
+        if (Health < 0)
         {
+            Health = 0;
+        }       
+
+        if (Health > 0)
+        {          
+            int heartIndex = Health;           
+            HUD.DisableHeart(heartIndex);
+        }
+
+        else        
+        {           
             Destroy(gameObject);
         }
     }

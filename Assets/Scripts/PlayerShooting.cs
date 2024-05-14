@@ -5,7 +5,6 @@ public class PlayerShooting : MonoBehaviour
 {
     public GameObject BulletPrefab;
     private float LastShoot;
-    private float Health = 5;
 
     private void Update()
     {

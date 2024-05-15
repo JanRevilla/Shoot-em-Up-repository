@@ -29,6 +29,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         animator.SetTrigger("EnemyDead");
         canMove = false;
+        GetComponent<CapsuleCollider2D>().enabled = false;
         PointSystem.NewPoints(1);
         Destroy(gameObject, 0.4f);
     }

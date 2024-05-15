@@ -7,7 +7,6 @@ using UnityEngine.XR;
 public enum GameState
 {
     Playing,
-    // Paused,
     MainMenu
 }
 
@@ -15,29 +14,23 @@ public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager Instance;
 
-    // public GameObject pauseMenuUI;
     public GameObject mainMenuUI;
-    // public GameObject gameUI; // asigna en el inspector (los 3)
+    public GameObject gameUI;
 
     private GameState currentState;
 
-
-
     private void Awake()
     {
-       /*
-       if (Instance == null)
+
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-       else
+        else
         {
             Destroy(gameObject);
         }
-
-        */
-
     }
 
     private void Start()
@@ -50,49 +43,33 @@ public class GameStateManager : MonoBehaviour
         currentState = newState;
         HandleStateChange();
     }
-    
+
     private void HandleStateChange()
     {
-        /*
+
         switch (currentState)
         {
             case GameState.Playing:
                 Time.timeScale = 1;
-                // pauseMenuUI.SetActive(false);
                 mainMenuUI.SetActive(false);
                 gameUI.SetActive(true);
                 break;
-            case GameState.Paused:
-                Time.timeScale = 0;
-                // pauseMenuUI.SetActive(true);
-                mainMenuUI.SetActive(false);
-                gameUI.SetActive(false);
-                break; 
             case GameState.MainMenu:
                 Time.timeScale = 1;
-                // pauseMenuUI.SetActive(false);
                 mainMenuUI.SetActive(true);
                 gameUI.SetActive(false);
                 break;
         }
-        */
+
     }
-    
-    // Métodos para los botones del UI
+
     public void OnPlay()
     {
-        // Cambiar al estado Playing
         ChangeState(GameState.Playing);
 
-        // Cargar la escena del juego
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    /*
-    public void OnPause()
-    {
-        ChangeState(GameState.Paused);
-    }
-    */
+
     public void OnMainMenu()
     {
         ChangeState(GameState.MainMenu);

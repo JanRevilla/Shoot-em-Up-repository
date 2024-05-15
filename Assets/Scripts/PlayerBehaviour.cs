@@ -121,6 +121,7 @@ public class PlayerBehaviour : MonoBehaviour
         {           
             Destroy(gameObject);
             PointSystem.points = 0;
+            GameStateManager.Instance.ChangeState(GameState.MainMenu);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
     }

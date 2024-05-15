@@ -110,7 +110,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void Hit()
     {      
-        Health -= 1;        
+        Health -= 1;
+        Animator.SetTrigger("hurt");
 
         if (Health > 0)
         {          

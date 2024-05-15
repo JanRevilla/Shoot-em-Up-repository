@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -109,21 +110,17 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void Hit()
     {      
-        Health -= 1;     
-        if (Health < 0)
-        {
-            Health = 0;
-        }       
+        Health -= 1;        
 
         if (Health > 0)
         {          
             int heartIndex = Health;           
             HUD.DisableHeart(heartIndex);
         }
-
         else        
         {           
             Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
     }
 }

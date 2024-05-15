@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    Collider2D enemyCollider;
     public float speed = 2f;
     public float distance = 3f;
     private Vector3 startingPosition;
@@ -28,6 +29,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         animator.SetTrigger("EnemyDead");
         canMove = false;
+        PointSystem.NewPoints(1);
         Destroy(gameObject, 0.4f);
     }
 

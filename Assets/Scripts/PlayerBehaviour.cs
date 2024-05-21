@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,10 +25,16 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private bool isFloor;
     [SerializeField] private ParticleSystem jumpParticles;
 
+    private HealthComponent healthComponent;
+
     private void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
+        healthComponent = GetComponent<HealthComponent>();
+
+        healthComponent.OnHitReceived += Hit;
+        healthComponent.OnLifeDepleted += PlayerDie;
     }
 
     private void Update()
@@ -108,22 +113,28 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    public void Hit()
-    {      
-        Health -= 1;
+    private void Hit()
+    {
+
         Animator.SetTrigger("hurt");
 
-        if (Health > 0)
-        {          
-            int heartIndex = Health;           
-            HUD.DisableHeart(heartIndex);
-        }
-        else        
-        {           
-            Destroy(gameObject);
-            PointSystem.points = 0;
-            GameStateManager.Instance.ChangeState(GameState.MainMenu);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        }
+        //if (Health > 0)
+        //{
+        //    int heartIndex = Health;
+        //    HUD.DisableHeart(heartIndex);
+        //}
+
+    }
+
+    private void PlayerDie()
+    {
+        PointSystem.points = 0;
+        GameStateManager.Instance.ChangeState(GameState.MainMenu);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+
+        healthComponent.OnHitReceived -= Hit;
+        healthComponent.OnLifeDepleted -= PlayerDie;
+
+        Destroy(gameObject);
     }
 }

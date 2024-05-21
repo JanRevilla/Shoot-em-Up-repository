@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     Collider2D enemyCollider;
+    HealthComponent healthComponent;
     public float speed = 2f;
     public float distance = 3f;
     private Vector3 startingPosition;
@@ -15,6 +16,8 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         startingPosition = transform.position;
+        healthComponent = GetComponent<HealthComponent>();
+        healthComponent.OnLifeDepleted += Die;
     }
 
     void Update()
@@ -25,21 +28,22 @@ public class EnemyBehaviour : MonoBehaviour
             transform.Translate(movement);
         }
     }
-    public void Hit()
+    private void Die()
     {
         animator.SetTrigger("EnemyDead");
         canMove = false;
         GetComponent<CapsuleCollider2D>().enabled = false;
         PointSystem.NewPoints(1);
+        healthComponent.OnLifeDepleted -= Die;
         Destroy(gameObject, 0.4f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerBehaviour player = other.GetComponent<PlayerBehaviour>();
-        if (player != null)
+        HealthComponent playerHealthComponent = other.GetComponent<HealthComponent>();
+        if (playerHealthComponent != null)
         {
-            player.Hit();
+            playerHealthComponent.Hit();
         }
     }
 }

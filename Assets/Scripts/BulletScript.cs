@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
@@ -28,11 +27,14 @@ public class BulletScript : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {  
-        EnemyBehaviour enemy = other.GetComponent<EnemyBehaviour>();
-        if (enemy != null)
+    {
+        if (other.gameObject.CompareTag("Player"))
+            return;
+
+        HealthComponent enemyHealthComponent = other.GetComponent<HealthComponent>();
+        if (enemyHealthComponent != null)
         {
-            enemy.Hit();
+            enemyHealthComponent.Hit();
         }
         DestroyBullet();
     }

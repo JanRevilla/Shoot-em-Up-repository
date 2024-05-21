@@ -1057,6 +1057,7 @@ GameObject:
   - component: {fileID: 831571544}
   - component: {fileID: 831571545}
   - component: {fileID: 831571546}
+  - component: {fileID: 831571547}
   m_Layer: 0
   m_Name: PlayerJohn
   m_TagString: Player
@@ -1255,6 +1256,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 9141338218809068285, guid: 25e8272bdec09f94e877850708a6b54f, type: 3}
+--- !u!114 &831571547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831571539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2efd98de37879314987439a0d5a8a3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 3
 --- !u!1 &854926517
 GameObject:
   m_ObjectHideFlags: 0

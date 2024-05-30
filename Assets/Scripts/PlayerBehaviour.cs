@@ -24,7 +24,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private Vector3 boxDimensions;
     [SerializeField] private bool isFloor;
     [SerializeField] private ParticleSystem jumpParticles;
-
+    [SerializeField] private AudioClip jumpSound;
     private HealthComponent healthComponent;
 
     private void Start()
@@ -55,6 +55,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Jump();
             jumpParticles.Play();
+            ControlSound.Instance.ExecuteSound(jumpSound);
         }
         if (Input.GetKeyDown(downKey))
         {

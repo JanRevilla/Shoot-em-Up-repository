@@ -130,8 +130,9 @@ public class PlayerBehaviour : MonoBehaviour
     private void PlayerDie()
     {
         PointSystem.points = 0;
-        GameStateManager.Instance.ChangeState(GameState.MainMenu);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        GameStateManager.Instance.ChangeState(GameState.MainMenu);
+
 
         healthComponent.OnHitReceived -= Hit;
         healthComponent.OnLifeDepleted -= PlayerDie;

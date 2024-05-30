@@ -23,6 +23,7 @@ public class GameStateManager : MonoBehaviour
 
     private void Awake()
     {
+        /*
         if (Instance == null)
         {
             Instance = this;
@@ -32,6 +33,7 @@ public class GameStateManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        */
     }
 
     private void Start()
@@ -54,19 +56,22 @@ public class GameStateManager : MonoBehaviour
                 Time.timeScale = 1;
                 mainMenuUI.SetActive(false);
                 gameUI.SetActive(true);
-                pauseMenuUI.SetActive(false); // Asegúrate de que el menú de pausa esté desactivado
+                pauseMenuUI.SetActive(false);
+                pauseButtonUI.SetActive(true); // Activar el botón de pausa
                 break;
             case GameState.MainMenu:
                 Time.timeScale = 1;
                 mainMenuUI.SetActive(true);
                 gameUI.SetActive(false);
-                pauseMenuUI.SetActive(false); // Asegúrate de que el menú de pausa esté desactivado
+                pauseMenuUI.SetActive(false);
+                pauseButtonUI.SetActive(false); // Asegúrate de que el botón de pausa esté desactivado
                 break;
             case GameState.Paused:
-                Time.timeScale = 0; // Pausar el juego
-                pauseMenuUI.SetActive(true); // Activar el menú de pausa
+                Time.timeScale = 0;
+                pauseMenuUI.SetActive(true);
                 gameUI.SetActive(false);
                 mainMenuUI.SetActive(false);
+                pauseButtonUI.SetActive(false); // Asegúrate de que el botón de pausa esté desactivado
                 break;
         }
     }
@@ -75,7 +80,7 @@ public class GameStateManager : MonoBehaviour
     {
         ChangeState(GameState.Playing);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        pauseButtonUI.SetActive(true);
+        // pauseButtonUI.SetActive(true);
         Debug.Log("OnPlay called. Current state: " + currentState);
     }
 
@@ -87,7 +92,7 @@ public class GameStateManager : MonoBehaviour
 
     public void OnPause()
     {
-        pauseButtonUI.SetActive(false);
+        // pauseButtonUI.SetActive(false);
         ChangeState(GameState.Paused);
         Debug.Log("OnPause called. Current state: " + currentState);
     }
@@ -100,7 +105,7 @@ public class GameStateManager : MonoBehaviour
 
     public void OnResume()
     {
-        pauseButtonUI.SetActive(true);
+        // pauseButtonUI.SetActive(true);
         if (currentState == GameState.Paused)
         {
             ChangeState(GameState.Playing);
@@ -111,7 +116,7 @@ public class GameStateManager : MonoBehaviour
 
     public void OnRestart()
     {
-        pauseButtonUI.SetActive(true);
+        // pauseButtonUI.SetActive(true);
         PointSystem.points = 0;
         // Reiniciar el nivel actual
         ChangeState(GameState.Playing);

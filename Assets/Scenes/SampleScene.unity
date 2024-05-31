@@ -808,7 +808,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4400019, y: -0.051000003, z: -10}
+  m_LocalPosition: {x: -0.44245332, y: -0.051000003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -894,15 +894,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Don't let them pass
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: eb7fbb0729b85eb4fb8f1a18970d9010, type: 2}
+  m_sharedMaterial: {fileID: 6484361297327523564, guid: eb7fbb0729b85eb4fb8f1a18970d9010, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6791,7 +6791,7 @@ Transform:
   m_GameObject: {fileID: 1398824921}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4400019, y: -0.051000003, z: -10}
+  m_LocalPosition: {x: -0.44245332, y: -0.051000003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7984,6 +7984,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1472873848288526848, guid: 99ac75f0c3474ad45b77b8d24e9713fe, type: 3}
+      propertyPath: m_fontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472873848288526848, guid: 99ac75f0c3474ad45b77b8d24e9713fe, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: eb7fbb0729b85eb4fb8f1a18970d9010, type: 2}
+    - target: {fileID: 1472873848288526848, guid: 99ac75f0c3474ad45b77b8d24e9713fe, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472873848288526848, guid: 99ac75f0c3474ad45b77b8d24e9713fe, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472873848288526848, guid: 99ac75f0c3474ad45b77b8d24e9713fe, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472873848288526848, guid: 99ac75f0c3474ad45b77b8d24e9713fe, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472873848288526848, guid: 99ac75f0c3474ad45b77b8d24e9713fe, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6484361297327523564, guid: eb7fbb0729b85eb4fb8f1a18970d9010, type: 2}
+    - target: {fileID: 1472873848288526848, guid: 99ac75f0c3474ad45b77b8d24e9713fe, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190335
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472873848288526848, guid: 99ac75f0c3474ad45b77b8d24e9713fe, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2526611090158274709, guid: 99ac75f0c3474ad45b77b8d24e9713fe, type: 3}
       propertyPath: m_Camera
       value: 

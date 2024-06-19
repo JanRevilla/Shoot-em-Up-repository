@@ -16,7 +16,7 @@ public class EnemyDisappearing : MonoBehaviour
     }
     private void OnTriggerEnter2D()
     {       
-        if (Enemy.transform.position.x < -2.0f)
+        if (Enemy.transform.position.x < -1.75f)
         {
             //gameObject.SetActive(false);
             towerBehaviour.GameLifes--;

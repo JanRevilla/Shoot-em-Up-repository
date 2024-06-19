@@ -8,15 +8,16 @@ public class EnemySpawner : MonoBehaviour
     float x, y;
     [SerializeField] private Transform spawnPoints;
     [SerializeField] private GameObject[] enemies;
-    [SerializeField] private float minTimeBetweenSpawns = 1f;
-    [SerializeField] private float maxTimeBetweenSpawns = 3f;
+    float minTimeBetweenSpawns = 1;
+    float maxTimeBetweenSpawns = 2;
     private float timeNextSpawn;
-    public static float spawnTime = 3f;
+    [SerializeField]public static float spawnTime;
     void Start()
     {
         x = spawnPoints.position.x;
         y = spawnPoints.position.y;
         timeNextSpawn = Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
+            
     }
 
     // Update is called once per frame

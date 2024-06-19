@@ -17,25 +17,21 @@ public class PointSystem : MonoBehaviour
     {
         
         textMesh.text = points.ToString("0");
-        if (points >= 100)
-        {
-            EnemySpawner.spawnTime = 2.0f;
-        }
-        if (points >= 200)
-        {
-            EnemySpawner.spawnTime = 1.0f;
-        }
-        if (points >= 300)
+        if (points == 0)
         {
             EnemySpawner.spawnTime = 0.5f;
         }
-        if (points >= 400)
+        if (points == 25)
         {
             EnemySpawner.spawnTime = 0.3f;
         }
-        if (points >= 500)
+        if (points == 50)
         {
             EnemySpawner.spawnTime = 0.1f;
+        }
+        if (points == 75)
+        {
+            EnemySpawner.spawnTime = 0.05f;
         }
     }
 

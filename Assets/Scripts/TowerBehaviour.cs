@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class TowerBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float GameLifes = 3;
     public TextMeshProUGUI text;
     TextScript textScript;
@@ -20,7 +19,6 @@ public class TowerBehaviour : MonoBehaviour
         is1life = true;
     }
 
-    // Update is called once per frame
     public void Update()
     {
         if (GameLifes == 2 && is2lifes)

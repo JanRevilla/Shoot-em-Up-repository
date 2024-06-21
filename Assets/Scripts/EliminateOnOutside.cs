@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 public class EnemyDisappearing : MonoBehaviour
 {
-    // Referencia al objeto que hará desaparecer al enemigo
+    public string Find = "TowerLifes";
     public GameObject Enemy;
     public GameObject Tower;
     TowerBehaviour towerBehaviour;
     
     private void Update()
     {
-        Tower = GameObject.Find("Tower");
+        Tower = GameObject.Find(Find);
         towerBehaviour = Tower.GetComponent<TowerBehaviour>();
         OnTriggerEnter2D();
     }

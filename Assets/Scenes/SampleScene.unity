@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 256673861}
   - component: {fileID: 256673860}
   m_Layer: 0
-  m_Name: Tower
+  m_Name: TowerLifes
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -890,7 +890,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.44245332, y: -0.051000003, z: -10}
+  m_LocalPosition: {x: -0.4400019, y: -0.051000003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6873,7 +6873,7 @@ Transform:
   m_GameObject: {fileID: 1398824921}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.44245332, y: -0.051000003, z: -10}
+  m_LocalPosition: {x: -0.4400019, y: -0.051000003, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
